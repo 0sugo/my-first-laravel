@@ -6,7 +6,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Namee</th>
+                <th>Name</th>
                 <th>Email</th>
                 <th>Created At</th>
             </tr>

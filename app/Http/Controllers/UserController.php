@@ -24,14 +24,27 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8',
+            'phone_number' => 'nullable|string',
+            'bio' => 'nullable|string',
         ]);
 
         // Create a new user record using Eloquent
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password); // Hash the password
-        $user->save(); // Save the user record to the database
+        // $user = new User();
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->password = bcrypt($request->password); // Hash the password
+        // $user->save(); // Save the user record to the database
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
+        $user->profile()->create([
+            'phone_number' => $request->phone_number,
+            'bio' => $request->bio,
+        ]);
 
         return redirect()->route('users.index')->with('success', 'User created successfully!');
     }
@@ -43,7 +56,7 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'User deleted successfully!');
     }
 
-    public function update(Request $request,User $user)
+    public function update(Request $request, User $user)
     {
         $request->validate([
             'name' => 'required|string|max:255',

@@ -23,13 +23,19 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger"
-                                onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                                    onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
                             </form>
                         </td>
                         <td>
-                            <form action="{{route('users.edit',$user->id)}}">
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to edit?')">Edit</button>
+                            <form action="{{ route('users.edit', $user->id) }}">
+                                <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to edit?')">Edit</button>
                             </form>
+                        </td>
+                        {{-- button to update profile --}}
+                        <td>
+                            <a href="{{ route('profiles.edit', $user->profile->id) }}" onclick="return confirm('Are you sure you want to edit profile?')">
+                         Edit profile
                         </td>
 
                     </tr>

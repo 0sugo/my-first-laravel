@@ -13,7 +13,6 @@ q
     q
     q
     q
-    q
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));

@@ -1,6 +1,5 @@
 <?php
 q
-q
     q
     q
 use Illuminate\Http\Request;

@@ -11,7 +11,6 @@ q
     q
     q
     q
-    q
 // Register the Composer autoloader...
 require __DIR__.'/../vendor/autoload.php';
 
